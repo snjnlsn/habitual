@@ -11,7 +11,7 @@ RSpec.describe RemindersController, type: :controller do
 
   describe "Reminder is valid" do
 
-    xit "saves proposal to db" do
+    xit "returns status 201" do
       post "habits/#{@habit.id}/reminders" => 'reminders#create'#, params: { reminder: { answer: "Dog" } }
       expect(response).to have_http_status 201
 

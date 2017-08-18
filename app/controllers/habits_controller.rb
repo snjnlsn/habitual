@@ -22,7 +22,7 @@ class HabitsController < ApplicationController
     if @habit
       render json: @habit.reminders, status: 201
     else
-      status: 422
+      render status: 422
     end
   end
 
