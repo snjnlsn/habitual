@@ -1,3 +1,6 @@
+
+#Habitual [![Build Status](https://travis-ci.org/sanjaynelson/habitual.svg?branch=master)](https://travis-ci.org/sanjaynelson/habitual)
+
 # README
 
 This README would normally document whatever steps are necessary to get the
