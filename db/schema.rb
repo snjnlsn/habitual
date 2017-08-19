@@ -26,8 +26,8 @@ ActiveRecord::Schema.define(version: 20170818172658) do
   end
 
   create_table "reminders", force: :cascade do |t|
-    t.integer "habit_id"
-    t.string "answer"
+    t.integer "habit_id", null: false
+    t.string "answer", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
