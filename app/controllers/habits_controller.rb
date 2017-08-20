@@ -3,6 +3,7 @@ class HabitsController < ApplicationController
   before_action :set_user, only: [:index, :create]
 
   def index
+    @user = User.first
     if @user
       render json: @user.habits, status: 201
     end
@@ -42,7 +43,7 @@ class HabitsController < ApplicationController
   end
 
   def set_user
-    @user = User.find_by(user_identifier: params[:user_identifier])
+    @user = User.find_or_create_by(user_identifier: params[:user_id])
   end
 
   def set_habit
