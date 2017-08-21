@@ -35,6 +35,10 @@ class Habit < ApplicationRecord
     end
   end
 
+  def on_hot_streak
+    return true if self.reminders[-1].answer + self.reminders[-2].answer + self.reminders[-3].answer + self.reminders[-4].answer + self.reminders[-5].answer == "yesyesyesyesyes"
+  end
+
   def get_stats
     {
       totalReminders: self.reminders.count.to_s,
@@ -42,7 +46,8 @@ class Habit < ApplicationRecord
       noReminders: self.declined_reminders.count.to_s,
       percentageDeclined: self.declined_percentage.to_s,
       percentageAccepted: self.accepted_percentage.to_s,
-      habitTime: self.time_since_creation
+      habitTime: self.time_since_creation,
+      hotStreak: self.on_hot_streak
     }
   end
 
