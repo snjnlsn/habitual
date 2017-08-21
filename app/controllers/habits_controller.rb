@@ -1,5 +1,5 @@
 class HabitsController < ApplicationController
-  before_action :set_habit, only: [:show, :update]
+  before_action :set_habit, only: [:show, :update, :destroy]
   before_action :set_user, only: [:index, :create]
 
   def index
@@ -37,7 +37,7 @@ class HabitsController < ApplicationController
   end
 
   def destroy
-    @habit.destroy!
+    @habit.destroy
   end
 
   private
