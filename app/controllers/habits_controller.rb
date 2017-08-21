@@ -36,6 +36,10 @@ class HabitsController < ApplicationController
     end
   end
 
+  def destroy
+    @habit.destroy!
+  end
+
   private
 
   def habit_params
