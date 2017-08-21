@@ -4,6 +4,7 @@ class RemindersController < ApplicationController
     @habit = Habit.find_by(id: params[:habit_id])
     @reminder = Reminder.new(reminder_params)
     @reminder.habit = @habit
+
     if @reminder.save
       render json: @reminder, status: 201
     else
