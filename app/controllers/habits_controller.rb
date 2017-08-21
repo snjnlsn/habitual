@@ -21,7 +21,7 @@ class HabitsController < ApplicationController
 
   def show
     if @habit
-      render json: @habit.reminders, status: 201
+      render json: @habit.get_stats, status: 201
     else
       render status: 422
     end
