@@ -12,7 +12,7 @@ class HabitsController < ApplicationController
   def create
     @habit = Habit.new(habit_params)
     @habit.user = @user
-    if @habit.save
+    if @habit.save # create one reminder
       render json: @habit, status: 201
     else
       render json: @habit.errors, status: 422
@@ -21,7 +21,7 @@ class HabitsController < ApplicationController
 
   def show
     if @habit
-      render json: @habit.get_stats, status: 201
+      render json: {stats: @habit.get_stats, name: @habit.name, reminders: @habit.reminders}, status: 201
     else
       render status: 422
     end
