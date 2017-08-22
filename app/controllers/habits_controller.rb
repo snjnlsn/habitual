@@ -12,7 +12,10 @@ class HabitsController < ApplicationController
   def create
     @habit = Habit.new(habit_params)
     @habit.user = @user
-    if @habit.save # create one reminder
+    if @habit.save
+      # commented out b/c it's token reliant.
+      # time = DateTime.parse("August 22, 2017 11:36 -0500") # depends on the format of the time we're setting reminders.
+      # SendReminderJob.set(wait_until: time).perform_later(@habit.name)
       render json: @habit, status: 201
     else
       render json: @habit.errors, status: 422
