@@ -24,7 +24,11 @@ class HabitsController < ApplicationController
 
   def show
     if @habit
-      render json: {stats: @habit.get_stats, name: @habit.name, reminders: @habit.reminders}, status: 201
+      if @habit.reminders.any?
+        render json: {stats: @habit.get_stats, name: @habit.name, reminders: @habit.reminders}, status: 201
+      else
+        render json: {name: @habit.name}, status: 201
+      end
     else
       render status: 422
     end
