@@ -57,18 +57,18 @@ RSpec.describe Habit, type: :model do
     context "Percentage" do
 
       it "returns percentage of reminders that were accepted" do
-        expect(@habit.accepted_percentage).to eq 0.4
+        expect(@habit.accepted_percentage).to eq 40
       end
 
       it "returns percentage of reminders that were rejected" do
-        expect(@habit.declined_percentage).to eq 0.6
+        expect(@habit.declined_percentage).to eq 60
       end
 
       it "returns a hash of statistics" do
         stats = @habit.get_stats
         expect(stats[:totalReminders]).to eq "10"
         expect(stats[:yesReminders]).to eq "4"
-        expect(stats[:percentageDeclined]).to eq "0.6"
+        expect(stats[:pieChart][0][:number]).to eq "60"
       end
 
     end
