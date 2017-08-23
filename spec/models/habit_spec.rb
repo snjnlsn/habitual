@@ -68,7 +68,7 @@ RSpec.describe Habit, type: :model do
         stats = @habit.get_stats
         expect(stats[:totalReminders]).to eq "10"
         expect(stats[:yesReminders]).to eq "4"
-        expect(stats[:pieChart][0][:number]).to eq "60"
+        expect(stats[:pieChart][0][:number]).to eq 60
       end
 
     end
