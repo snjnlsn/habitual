@@ -14,11 +14,11 @@ class Habit < ApplicationRecord
   end
 
   def declined_percentage
-    self.declined_reminders.count / self.reminders.count.to_f
+    (self.declined_reminders.count / self.reminders.count.to_f) * 100
   end
 
   def accepted_percentage
-    self.accepted_reminders.count / self.reminders.count.to_f
+    (self.accepted_reminders.count / self.reminders.count.to_f) * 100
   end
 
   def time_since_creation
@@ -41,11 +41,10 @@ class Habit < ApplicationRecord
 
   def get_stats
     {
+      pieChart:[{number: self.declined_percentage.to_s, name: "No"},{number: self.accepted_percentage.to_s, name: "Yes"}]
       totalReminders: self.reminders.count.to_s,
       yesReminders: self.accepted_reminders.count.to_s,
       noReminders: self.declined_reminders.count.to_s,
-      percentageDeclined: self.declined_percentage.to_s,
-      percentageAccepted: self.accepted_percentage.to_s,
       habitTime: self.time_since_creation,
       hotStreak: self.on_hot_streak
     }
