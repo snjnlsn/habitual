@@ -5,4 +5,7 @@ Rails.application.routes.draw do
       resources :reminders, only: [:create]
     end
   end
+
+  post '/randoms', to: 'randoms#random'
+
 end

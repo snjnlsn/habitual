@@ -49,4 +49,17 @@ class Habit < ApplicationRecord
     }
   end
 
+  def random_times
+    random_times = []
+    counter = 0
+    span = self.end_time - self.reminder_time
+    interval = span / reminder_frequency
+    reminder_frequency.times do
+      seconds = rand(counter..counter + interval)
+      counter += interval
+      random_times << Time.now + seconds
+    end
+    random_times
+  end
+
 end
