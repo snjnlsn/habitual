@@ -41,7 +41,7 @@ class Habit < ApplicationRecord
 
   def get_stats
     {
-      pieChart:[{number: self.declined_percentage, name: "No"},{number: self.accepted_percentage, name: "Yes"}],
+      pieChart:[{number: self.accepted_percentage, name: "Yes"},{number: self.declined_percentage, name: "No"}],
       totalReminders: self.reminders.count.to_s,
       yesReminders: self.accepted_reminders.count.to_s,
       noReminders: self.declined_reminders.count.to_s,
