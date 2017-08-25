@@ -1,4 +1,4 @@
-# Habit Builder - Back End [![Build Status](https://travis-ci.org/sanjaynelson/habitual.svg?branch=master)](https://travis-ci.org/sanjaynelson/habitual) [![npm version](https://badge.fury.io/js/react-native.svg)](https://badge.fury.io/js/react-native)
+# Habit Builder - Back End [![Build Status](https://travis-ci.org/sanjaynelson/habitual.svg?branch=master)](https://travis-ci.org/sanjaynelson/habitual) [![npm version](https://badge.fury.io/js/react-native.svg)](https://badge.fury.io/js/react-native) [![tested with jest](https://img.shields.io/badge/tested_with-jest-99424f.svg)](https://github.com/facebook/jest)
 
 ## Installation
 To install this solution, please visit the [Habitual Back End Repository](https://github.com/markfranciose/habitual-front/blob/master/README.md)
