@@ -24,6 +24,9 @@ RSpec.describe Reminder, type: :model do
       expect(u.habits.first.reminders).to include reminder
     end
 
+    xit "can only have an answer value of 'yes' or 'no' " do
+    end
+
   end
 
 end

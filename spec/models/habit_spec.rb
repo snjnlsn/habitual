@@ -25,7 +25,23 @@ RSpec.describe Habit, type: :model do
 
       expect(habit.valid?).to be false
     end
+  end
 
+  describe "time since creation" do
+
+    xit "returns a correctly pluralized string" do
+    end
+
+    xit "returns a blank string with invalid input" do
+    end
+  end
+
+  describe "on a hot streak" do
+    xit "returns a boolean" do
+    end 
+
+    xit "correctly identifies if the user has done their last 5 reminders of a specific habit" do
+    end
   end
 
   describe "statistics" do
@@ -73,6 +89,23 @@ RSpec.describe Habit, type: :model do
 
     end
 
+  end
+
+  describe "Randomized Times" do
+    context "" do
+      xit "returns a blank array if reminder num is < 1" do
+      end
+
+      xit "returns a blank array if the end time is before start time" do
+      end
+
+      xit "returns times within a span of 24 hours" do
+      end
+
+      xit "returns times within the correct intervals" do
+      end
+
+    end
   end
 
 end
