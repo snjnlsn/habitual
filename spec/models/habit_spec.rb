@@ -2,10 +2,11 @@ require 'rails_helper'
 
 RSpec.describe Habit, type: :model do
 
-  describe "validations" do
     before(:each) do
       @user = User.create(user_identifier: "12345")
     end
+
+  describe "validations" do
 
     it "is valid with a name, reminder frequency, reminder time and user_id" do
       habit = @user.habits.create(user_id: 1, reminder_time: Time.now, reminder_frequency: 1, name: "drink more water")
@@ -59,13 +60,28 @@ RSpec.describe Habit, type: :model do
   end
 
   describe "on a hot streak" do
-    xit "returns false if a user has answered yes to their last 5 reminders" do
-    end 
 
-    xit "returns false if a user has not answered yes to their last 5 reminders" do
+    before(:each) do
+      @hot_habit = @user.habits.create(reminder_time: Time.now, reminder_frequency: 1, name: "drink more water")
     end
 
-    xit "returns false in the case of invalid input" do
+    it "returns true if a user has answered yes to their last 5 reminders" do
+      5.times do @hot_habit.reminders.create(answer: 'yes') end
+      expect(@hot_habit.on_hot_streak).to eq true
+    end 
+
+    it "returns falsey if a user has not answered yes to their last 5 reminders" do
+      5.times do @hot_habit.reminders.create(answer: 'yes') end
+      @hot_habit.reminders.create(answer: 'no')
+      expect(@hot_habit.on_hot_streak).to be_falsey
+    end
+
+    it "returns falsey in the case of invalid input" do
+      5.times do @hot_habit.reminders.create(answer: "junk") end
+      expect(@hot_habit.on_hot_streak).to be_falsey
+    end
+
+    xit 'returns falsey ig a habit has fewer than 5 reminders' do
     end
   end
 
@@ -122,10 +138,11 @@ RSpec.describe Habit, type: :model do
     context "invalid input" do
       before(:each) { @user = User.create user_identifier: "12345" }
 
-      xit "returns a single time if no end time is provided" do
-        @habit  = Habit.create(name: "walk the dog", reminder_time: Time.now, reminder_frequency: 1, user: @user)
-        expect(@habit.random_times).to eq Time.now # this should fail... how would I build up this test???
-
+      it "returns a single time if no end time is provided" do
+        reminder_time = Date.parse("01/01/2017")
+        @habit  = Habit.create(name: "walk the dog", reminder_time: reminder_time, reminder_frequency: 1, user: @user)
+        expect(@habit.random_times).to include reminder_time 
+        expect(@habit.random_times.count).to eq 1
       end
 
       xit "returns a blank array if reminder num is < 1" do
@@ -135,13 +152,17 @@ RSpec.describe Habit, type: :model do
 
       xit "returns a blank array if the end time is before start time" do
         @habit  = Habit.create(name: "walk the dog", reminder_time: Time.now, reminder_frequency: 0, user: @user, end_time: Time.now - 10000)
-        expect(@habut.random_times).to eq []
+        expect(@habit.random_times).to eq []
       end
     end
 
     context "valid input" do
-
-      xit "returns times within a span of 24 hours" do
+      
+      it "returns times within a span of 24 hours" do
+        reminder_time = Date.parse("01/01/2017")
+        next_day = reminder_time + 1
+        @habit  = Habit.create(name: "walk the dog", reminder_time: reminder_time, end_time: next_day, reminder_frequency: 1, user: @user)
+        expect(@habit.random_times[-1] - @habit.random_times[0]).to be < (60 * 60 * 24)
       end
 
       xit "returns times within the correct intervals" do
