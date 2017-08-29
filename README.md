@@ -1,4 +1,4 @@
-# Habit Builder - Back End [![Build Status](https://travis-ci.org/sanjaynelson/habitual.svg?branch=master)](https://travis-ci.org/sanjaynelson/habitual) [![npm version](https://badge.fury.io/js/react-native.svg)](https://badge.fury.io/js/react-native)
+# Habitual - Back End [![Build Status](https://travis-ci.org/sanjaynelson/habitual.svg?branch=master)](https://travis-ci.org/sanjaynelson/habitual) [![npm version](https://badge.fury.io/js/react-native.svg)](https://badge.fury.io/js/react-native)
 
 ## Installation
 Please visit the [Habitual Front End Repository](https://github.com/markfranciose/habitual-front/blob/master/README.md)
