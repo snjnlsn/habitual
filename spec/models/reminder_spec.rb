@@ -4,6 +4,9 @@ RSpec.describe Reminder, type: :model do
 
   describe "validations" do
 
+    xit "is valid with an answer of yes or no, valid habit_id" do
+    end
+
     it "is not valid without a habit" do
       reminder = Reminder.new(answer: "yes")
 
@@ -22,6 +25,11 @@ RSpec.describe Reminder, type: :model do
       reminder = Reminder.new( answer: "yes")
       u.habits.first.reminders << reminder
       expect(u.habits.first.reminders).to include reminder
+    end
+
+
+    xit 'has a formatted created at date' do
+      expect(habit)
     end
 
   end
